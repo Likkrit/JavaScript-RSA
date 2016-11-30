@@ -1,22 +1,22 @@
-# JavaScript-RSA
+JavaScript-RSA
 ---
 
 一个基于JavaScript的RSA公钥加密、私钥解密库
 
-### 为什么它会出现
+## 为什么它会出现
 
 为了更加方便在业务中应用加解密，只需在项目中引入一个js（25kb）。
 
-### DEMO
+## DEMO
 
 [https://likkrit.github.io/JavaScript-RSA/demo](https://likkrit.github.io/JavaScript-RSA/demo)
 
-### 环境要求
+## 环境要求
 
 - openssl（mac系统自带，windows可前往[https://doc.open.alipay.com/](https://doc.open.alipay.com/doc2/detail?treeId=58&articleId=103242&docType=1)下载）
 - NodeJS
 
-### 用法
+## 用法
 
 1、 使用openssl生成rsa证书私钥，进入终端，执行：
 ```
@@ -48,5 +48,3 @@ npm install
 ## 其他
 
 该项目打包自[http://www-cs-students.stanford.edu/~tjw/jsbn/](http://www-cs-students.stanford.edu/~tjw/jsbn/)，可自行前往了解更多详情。
-
-rsa.decrypt(encrypted)
