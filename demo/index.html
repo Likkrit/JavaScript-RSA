@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="Author" content="Likkrit">
+	<title>RSA In JavaScript</title>
+	<script type="text/javascript" src="../dist/rsa.min.js"></script>
+	<style type="text/css">
+	body{
+		padding: 3%;
+	}
+	input{
+		width: 80px;
+		height: 40px;
+		display: block;
+	}
+	textarea{
+		width: 100%;
+	}
+	.footer{
+		margin-top: 40px;
+	}
+	</style>
+<script language="JavaScript">
+function cmdEncryptClick(){
+	var time = new Date().getTime(),
+	txtPlaintext = document.querySelector(".encrypt .txtPlaintext"),
+	txtPlaintextEncrypted_16 = document.querySelector(".txtPlaintextEncrypted_16"),
+	txtPlaintextEncrypted = document.querySelector(".txtPlaintextEncrypted");
+
+	var ciphertext = rsa.encrypt(txtPlaintext.value);
+	txtPlaintextEncrypted_16.value = (ciphertext);
+	txtPlaintextEncrypted.value = window.btoa(ciphertext);
+	document.getElementById("encryptTime").innerText = new Date().getTime() - time + 'ms';
+}
+
+function cmdDeEncryptClick(){	
+	var time = new Date().getTime(),
+	txtPlaintextEncrypted = document.querySelector(".txtPlaintextEncrypted"),
+	txtPlaintextEncrypted_16 = document.querySelector(".txtPlaintextEncrypted_16"),
+	txtPlaintext = document.querySelector(".decrypt .txtPlaintext");
+	if(txtPlaintextEncrypted.value)
+		var string = window.atob(txtPlaintextEncrypted.value);
+	else
+	var string = txtPlaintextEncrypted_16.value;
+	txtPlaintext.value = rsa.decrypt(string);
+	document.getElementById("decryptTime").innerText = new Date().getTime() - time + 'ms';
+}
+</script>
+</head>
+<body >
+<div style="padding-top:10px" class="encrypt">
+			待加密的数据
+			<textarea rows=5 class="txtPlaintext">待加密的内容</textarea>
+			加密数据（16进制）
+			<textarea rows=5 class="txtPlaintextEncrypted_16"></textarea>
+			<div>
+			加密数据（base64）
+			<textarea rows=5 class="txtPlaintextEncrypted"></textarea>
+	<div>
+		<button onclick="cmdEncryptClick()" >加密</button>
+		<span id="encryptTime"></span>
+	</div>
+</div>
+
+<div style="padding-top:30px" class="decrypt">
+<div>
+	<button onclick="cmdDeEncryptClick()">解密</button>
+	<span id="decryptTime"></span>
+</div>
+	解密后的数据
+	<textarea rows=5 class="txtPlaintext"></textarea>
+</div>
+	<div class="footer">
+		<a href="https://github.com/Likkrit">https://github.com/Likkrit</a>
+	</div>
+</body>
+</html>
